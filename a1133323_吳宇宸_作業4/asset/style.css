@@ -1,0 +1,180 @@
+/* assets/style.css - Advanced Hacker Dashboard */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --neon-green: #00ff41;
+    --dark-bg: #0a0b10;
+    --panel-bg: rgba(16, 18, 26, 0.9);
+    --border-color: #003300;
+    --glow-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--neon-green);
+    font-family: 'Share Tech Mono', monospace;
+    margin: 0;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.05) 0%, transparent 80%),
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 100%, 100% 4px, 3px 100%;
+}
+
+/* 頂部掃描線動畫 */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    z-index: 100;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 標題區域 */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--neon-green);
+    box-shadow: var(--glow-shadow);
+    position: relative;
+}
+
+.header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 0 0 20px var(--neon-green);
+}
+
+/* 網格佈局 */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+/* 模組外殼 */
+.module {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* 模組裝飾角 */
+.module::after {
+    content: "";
+    position: absolute;
+    top: -1px; right: -1px;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent var(--neon-green) transparent transparent;
+}
+
+.module h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon-green);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 表單元件 */
+.form-group { margin-bottom: 15px; }
+label { display: block; color: #888; font-size: 0.8rem; margin-bottom: 5px; text-transform: uppercase; }
+
+input, textarea, select {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    color: var(--neon-green);
+    padding: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--neon-green);
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+/* 按鈕 */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-green);
+}
+
+/* 進度條區域 */
+.full-width {
+    grid-column: 1 / span 2;
+}
+
+.progress-wrapper {
+    margin: 15px 0;
+}
+
+.progress-bar-bg {
+    height: 10px;
+    background: #001100;
+    border: 1px solid var(--border-color);
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green);
+    width: 0%;
+    transition: 0.3s;
+}
+
+.log-terminal {
+    background: #050505;
+    border: 1px solid var(--border-color);
+    height: 200px;
+    overflow-y: auto;
+    padding: 15px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #00cc00;
+}
+
+/* 狀態標籤 */
+.status-tag {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    background: #003300;
+    border: 1px solid var(--neon-green);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: var(--neon-green); }
